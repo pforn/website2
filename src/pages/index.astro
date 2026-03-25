@@ -1,127 +1,287 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+
+const projects = [
+	{
+		title: "Self-hosting Infra",
+		subtitle: "old laptop = server",
+		description:
+			"No matter how easy it is to get an agent to develop an app and deploy it with infrastructure abstraction, there will come a point when you will need to prove the <strong>economic viability</strong> and <strong>security</strong> of your system. While just about every part of the infrastructure can be abstracted away cheaply, not <strong>understanding what is happening at the hardware level</strong> will become a hidden cost for small-medium business and large enterprises alike. In order to keep myself engaged with the low-level details, I prefer to self-host my own experimental services. Plus, why save a few bucks and spend them on tokens instead?",
+		tags: [
+			"Infrastructure",
+			"Linux",
+			"Docker",
+			"Cloudflare",
+			"Tailscale",
+			"Security",
+			"Monitoring",
+		],
+		icon: `<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>`,
+	},
+	{
+		title: "Agentic Engineering",
+		subtitle: "nothing vibe-y about it",
+		description:
+			"I get to be the product manager, infrastructure architect, and engineering manager; a team of agents are my junior and senior devs. Most <strong>\"optimal\" code is now commoditized</strong>, so why should I be the one to write it? The key pieces left for humans in developing valuable applications is making sure the <strong>product fit is viable</strong>, having an cost efficient, proactive, and self-improving agentic team, and checking that the <strong>agents are manifesting your intent</strong>. That's what will drive value in the next generation of not just software development, but business. The tailwinds are <strong>risk of adoption</strong> and <strong>cost of capital</strong>, not defects in agents' ability to produce working code.",
+		tags: [
+			"Claude Code",
+			"LangGraph",
+			"Orchestration",
+			"Agent Architecture",
+		],
+		icon: `<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+	},
+	{
+		title: "Talking Heads",
+		subtitle: "aggregates podcasts for sentiment analysis digests",
+		description:
+			"Keeping up with global economics, US equities, and business news requires parsing an <strong>impossible amount of information</strong>, plus I don't even work in the industry. Instead of wasting my time hearing out every writer, voice, and talking head, this unstructured data pipeline aims to get to the chase on what the <strong>overall sentiment</strong> is from those people I would want to hear from if I had the time to. Listening to a couple podcasts might do the trick, but building a system to listen to 100+ is more fun.",
+		tags: [
+			"Unstructured Data",
+			"Financial Markets",
+			"ML Processing",
+			"Data Pipelines",
+		],
+		icon: `<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>`,
+	},
+	{
+		title: "Sports Analytics",
+		subtitle: "I really like Moneyball",
+		description:
+			"A mix of historical analysis and continual data ingress at a scale large enough to use some <strong>distributed tools</strong> but fun enough to continue with as a hobby. I have a tin-hat theory that every MLB player that 'gets their bag' proceeds to mail it in for their remaining contract years, therefore farm-first organizations should be more successful, etc. Anyway, I think the Mets spent way too much money this year, I just need to prove it...",
+		tags: [
+			"Data Engineering",
+			"Big Data",
+			"Analytics",
+			"Sports",
+			"Validation",
+			"ML Training",
+		],
+		icon: `<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M6 5.3a9 9 0 0 1 0 13.4"></path><path stroke-linecap="round" stroke-linejoin="round" d="M18 5.3a9 9 0 0 0 0 13.4"></path></svg>`,
+	},
+];
 ---
 
 <BaseLayout title="Peter Fornasiero | AI Agent Builder & Software Engineer">
 	<main class="max-w-4xl mx-auto px-6 py-12 md:py-24">
-		<!-- Header / Nav -->
-		<nav class="flex justify-start gap-8 mb-16 text-lg font-medium">
-			<a
-				href="https://github.com/pforn"
-				target="_blank"
-				class="hover:text-forest transition-colors no-underline border-b-2 border-transparent hover:border-forest pb-1"
-				>GitHub</a
-			>
-			<a
-				href="https://linkedin.com/in/peterfornasiero"
-				target="_blank"
-				class="hover:text-forest transition-colors no-underline border-b-2 border-transparent hover:border-forest pb-1"
-				>LinkedIn</a
-			>
-		</nav>
-
 		<!-- Hero / Intro -->
-		<section class="flex flex-col md:flex-row items-start gap-12 mb-24">
-			<div class="flex-1">
-				<h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-					Peter Fornasiero
-				</h1>
-				<p
-					class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 max-w-2xl"
-				>
-					I'm a software engineer that was lucky enough to be able to
-					learn the fundamentals of computer science, cloud economics,
-					security, and scaling laws without LLMs being the default
-					answer.
+		<section
+			class="flex flex-col-reverse justify-between md:flex-row items-center md:items-stretch gap-12 mb-20"
+		>
+			<div class="flex-1 flex flex-col justify-between">
+				<div>
+					<!-- Title & Socials -->
+					<div class="flex items-center gap-6 mb-6">
+						<h1
+							class="text-5xl md:text-6xl font-black text-gray-900 tracking-tight"
+						>
+							Peter Fornasiero
+						</h1>
+						<div class="flex gap-4">
+							<!-- GitHub Icon -->
+							<a
+								href="https://github.com/pforn"
+								target="_blank"
+								class="text-gray-400 hover:text-forest transition-colors"
+								title="GitHub"
+							>
+								<span class="sr-only">GitHub Profile</span>
+								<svg
+									class="w-8 h-8"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										fill-rule="evenodd"
+										d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+										clip-rule="evenodd"></path>
+								</svg>
+							</a>
+							<!-- LinkedIn Icon -->
+							<a
+								href="https://linkedin.com/in/peter-fornasiero"
+								target="_blank"
+								class="text-gray-400 hover:text-forest transition-colors"
+								title="LinkedIn"
+							>
+								<span class="sr-only">LinkedIn Profile</span>
+								<svg
+									class="w-8 h-8"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+									></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+
+					<!-- Badge -->
+					<div
+						class="flex items-center gap-3 text-xl text-gray-700 mb-8 font-bold"
+					>
+						<span>Software Engineer & Solutions Architect</span>
+					</div>
+				</div>
+
+				<p class="text-lg text-gray-600 mb-8">
+					Hello there! Thanks for stopping by.
 				</p>
-				<p
-					class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 max-w-2xl"
-				>
-					I feel very fortunate to have been given a great foundation
-					of knowledge, endless curiousity, and problem solving skills
-					to be able to apply them to the <strong>application</strong>
-					of LLMs in various engineering contexts, but more practical business
-					contexts as well.
-				</p>
+
+				<!-- Bio Blurbs -->
+				<div class="space-y-6 max-w-2xl mt-auto">
+					<div class="border-l-4 border-gray-200 pl-5">
+						<p class="text-lg text-gray-700 leading-relaxed mb-4">
+							<strong class="text-gray-900"
+								>I build the infrastructure that makes AI
+								actually work.</strong
+							>
+						</p>
+						<p class="text-lg text-gray-700 leading-relaxed">
+							Before I orchestrated agents, I learned to build
+							systems by hand, earning my software engineer degree
+							before agent harnesses were a thing. I learned to
+							build systems the hard way, meaning long nights
+							debugging and learning to communicate with other
+							programmers about code architecture. A foundation in
+							critical thinking and pure problem-solving will
+							slowly be outsourced to the machine, but my
+							generation is one of the last to be put through that
+							rigorous style of education. Validating ground truth
+							and calling B.S. on an LLM output is rapidly
+							becoming the most valuable skill for
+							humans-(left)-in-the-loop.
+						</p>
+					</div>
+					<div
+						class="border-l-4 border-forest pl-5 py-1 text-lg text-gray-700 leading-relaxed"
+					>
+						<h2 class="text-2xl font-bold text-gray-900 mb-2">
+							Today, I build agentic-first.
+						</h2>
+						<p class="text-lg text-gray-700 leading-relaxed mb-4">
+							Agentic-led development is just the next layer of
+							abstraction.
+						</p>
+						<p class="text-lg text-gray-700 leading-relaxed">
+							The same way everyone takes bytecode and the JVM for
+							granted, we will soon take building robust, scalable
+							systems for granted, too. From classical ML to
+							frontier LLMs, I'm not fooled by the magic-in-a-can;
+							I see them for what they are—tools. For now, I
+							leverage everything I can out of a supercharged
+							SDLC, applying my engineering ethics and business
+							acumen to hone these models into highly productive,
+							outcome-driven engines.
+						</p>
+					</div>
+				</div>
 			</div>
+
+			<!-- Picture Column -->
 			<div
-				class="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden bg-forest flex-shrink-0 shadow-lg border-4 border-forest"
+				class="flex flex-col gap-6 md:gap-0 justify-between flex-shrink-0 w-48 md:w-56 lg:w-64"
 			>
-				<img
-					src="/peter_fornasiero_profile_placeholder.png"
-					alt="Peter Fornasiero"
-					class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-				/>
+				<!-- Profile Picture 1 -->
+				<div
+					class="w-full aspect-square rounded-2xl overflow-hidden bg-forest shadow-sm border-4 border-forest"
+				>
+					<Image
+						src="/peter_fornasiero_profile.jpg"
+						alt="Peter Fornasiero"
+						width={256}
+						height={256}
+						class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+					/>
+				</div>
+				<!-- Profile Picture 2 -->
+				<div
+					class="w-full aspect-square rounded-2xl overflow-hidden bg-forest shadow-sm border-4 border-forest"
+				>
+					<Image
+						src="/peter_mountain.jpg"
+						alt="Peter hiking on a mountain"
+						width={256}
+						height={256}
+						class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+					/>
+				</div>
+				<!-- Profile Picture 3 -->
+				<div
+					class="w-full aspect-square rounded-2xl overflow-hidden bg-forest shadow-sm border-4 border-forest"
+				>
+					<Image
+						src="/peter_iron_ring.jpg"
+						alt="Peter under the Iron Ring monument"
+						width={256}
+						height={256}
+						class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+					/>
+				</div>
 			</div>
 		</section>
 
-		<!-- Project Blurbs -->
-		<section class="grid md:grid-cols-2 gap-12 mb-24">
-			<div class="border-l-4 border-forest pl-6 py-2">
-				<h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
-					<span class="text-forest">/</span> Self-hosted Infrastructure
-				</h2>
-				<p class="text-lg text-gray-700 leading-relaxed">
-					Maintaining a containerized home infrastructure orchestrated
-					with Docker Compose and routed via Cloudflare + nginx. A
-					recent highlight was the environmental engineering for the <strong
-						>macro-insight-engine</strong
-					>, bridging complex dependency management with highly
-					scalable analytical workflows.
-				</p>
-			</div>
-			<div class="border-l-4 border-forest pl-6 py-2">
-				<h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
-					<span class="text-forest">/</span> AI Agents
-				</h2>
-				<p class="text-lg text-gray-700 leading-relaxed">
-					Developing production-ready agents using <strong
-						>Claude 3.5</strong
-					>, <strong>OpenRouter</strong>, and <strong
-						>LangGraph</strong
-					>. My work focuses on outcome-driven automation—from
-					predictive modeling for sports analytics on <strong
-						>MiroFish</strong
-					> to high-throughput data processing pipelines.
-				</p>
+		<!-- Projects -->
+		<section class="mb-24">
+			<h2
+				class="text-3xl font-bold text-gray-900 mb-10 pb-2 border-b-2 border-gray-200 inline-block"
+			>
+				Check out what I'm working on:
+			</h2>
+
+			<div class="grid md:grid-cols-2 gap-8">
+				{
+					projects.map((project) => (
+						<div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-forest transition-colors flex flex-col h-full group shadow-sm hover:shadow-md">
+							<div class="flex items-start gap-4 mb-4">
+								<div
+									class="p-2 bg-gray-50 rounded-lg group-hover:scale-110 transition-transform shrink-0"
+									set:html={project.icon}
+								/>
+								<div>
+									<h3 class="text-2xl font-bold text-gray-900 leading-tight mb-1">
+										{project.title}
+									</h3>
+									<p class="text-xs text-forest font-bold tracking-widest uppercase">
+										{project.subtitle}
+									</p>
+								</div>
+							</div>
+							<p
+								class="text-lg text-gray-700 leading-relaxed flex-grow"
+								set:html={project.description}
+							/>
+							<div class="flex flex-wrap gap-2 mt-8 border-t border-gray-100 pt-6">
+								{project.tags.map((tag) => (
+									<span class="rounded-full bg-gray-50 px-3 py-1 text-sm text-gray-600 font-medium border border-gray-200">
+										{tag}
+									</span>
+								))}
+							</div>
+						</div>
+					))
+				}
 			</div>
 		</section>
 
 		<!-- Footer -->
 		<footer
-			class="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6"
+			class="pt-8 flex flex-col items-center gap-4 border-t border-gray-100"
 		>
-			<p class="text-gray-500 font-medium">© 2026 Peter Fornasiero</p>
 			<div class="flex gap-8">
 				<a
 					href="https://github.com/pforn"
-					class="text-gray-400 hover:text-forest transition-colors"
+					class="text-gray-400 hover:text-forest transition-colors font-medium"
 					>GitHub</a
 				>
 				<a
-					href="https://linkedin.com/in/peterfornasiero"
-					class="text-gray-400 hover:text-forest transition-colors"
+					href="https://linkedin.com/in/peter-fornasiero"
+					class="text-gray-400 hover:text-forest transition-colors font-medium"
 					>LinkedIn</a
 				>
 			</div>
+			<p class="text-gray-400 text-sm">© 2026 Peter Fornasiero</p>
 		</footer>
 	</main>
 </BaseLayout>
-
-<style>
-	/* Subtle entrance animation */
-	main {
-		animation: fadeIn 0.8s ease-out;
-	}
-
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-</style>
