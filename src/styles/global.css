@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-geologica: "Geologica", sans-serif;
+  --color-forest: #228b22;
+  --color-forest-dark: #1b6b1b;
+  --color-forest-light: #2eaf2e;
+}
+
+@layer base {
+  body {
+    @apply font-geologica bg-white text-gray-900;
+  }
+}
+
+@layer utilities {
+  .text-forest {
+    color: var(--color-forest);
+  }
+  .bg-forest {
+    background-color: var(--color-forest);
+  }
+}

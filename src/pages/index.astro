@@ -1,518 +1,287 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Win95.CSS</title>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
-    <meta author="Pete" />
-    <meta property="og:image" content="/assets/preview.png" />
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
 
-    <link
-      rel="shortcut icon"
-      href="/assets/icons/computer-3.png"
-      type="image/png"
-    />
+const projects = [
+	{
+		title: "Self-hosting Infra",
+		subtitle: "old laptop = server",
+		description:
+			"No matter how easy it is to get an agent to develop an app and deploy it with infrastructure abstraction, there will come a point when you will need to prove the <strong>economic viability</strong> and <strong>security</strong> of your system. While just about every part of the infrastructure can be abstracted away cheaply, not <strong>understanding what is happening at the hardware level</strong> will become a hidden cost for small-medium business and large enterprises alike. In order to keep myself engaged with the low-level details, I prefer to self-host my own experimental services. Plus, why save a few bucks and spend them on tokens instead?",
+		tags: [
+			"Infrastructure",
+			"Linux",
+			"Docker",
+			"Cloudflare",
+			"Tailscale",
+			"Security",
+			"Monitoring",
+		],
+		icon: `<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>`,
+	},
+	{
+		title: "Agentic Engineering",
+		subtitle: "nothing vibe-y about it",
+		description:
+			"I get to be the product manager, infrastructure architect, and engineering manager; a team of agents are my junior and senior devs. Most <strong>\"optimal\" code is now commoditized</strong>, so why should I be the one to write it? The key pieces left for humans in developing valuable applications is making sure the <strong>product fit is viable</strong>, having an cost efficient, proactive, and self-improving agentic team, and checking that the <strong>agents are manifesting your intent</strong>. That's what will drive value in the next generation of not just software development, but business. The tailwinds are <strong>risk of adoption</strong> and <strong>cost of capital</strong>, not defects in agents' ability to produce working code.",
+		tags: [
+			"Claude Code",
+			"LangGraph",
+			"Orchestration",
+			"Agent Architecture",
+		],
+		icon: `<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+	},
+	{
+		title: "Talking Heads",
+		subtitle: "aggregates podcasts for sentiment analysis digests",
+		description:
+			"Keeping up with global economics, US equities, and business news requires parsing an <strong>impossible amount of information</strong>, plus I don't even work in the industry. Instead of wasting my time hearing out every writer, voice, and talking head, this unstructured data pipeline aims to get to the chase on what the <strong>overall sentiment</strong> is from those people I would want to hear from if I had the time to. Listening to a couple podcasts might do the trick, but building a system to listen to 100+ is more fun.",
+		tags: [
+			"Unstructured Data",
+			"Financial Markets",
+			"ML Processing",
+			"Data Pipelines",
+		],
+		icon: `<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>`,
+	},
+	{
+		title: "Sports Analytics",
+		subtitle: "I really like Moneyball",
+		description:
+			"A mix of historical analysis and continual data ingress at a scale large enough to use some <strong>distributed tools</strong> but fun enough to continue with as a hobby. I have a tin-hat theory that every MLB player that 'gets their bag' proceeds to mail it in for their remaining contract years, therefore farm-first organizations should be more successful, etc. Anyway, I think the Mets spent way too much money this year, I just need to prove it...",
+		tags: [
+			"Data Engineering",
+			"Big Data",
+			"Analytics",
+			"Sports",
+			"Validation",
+			"ML Training",
+		],
+		icon: `<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M6 5.3a9 9 0 0 1 0 13.4"></path><path stroke-linecap="round" stroke-linejoin="round" d="M18 5.3a9 9 0 0 0 0 13.4"></path></svg>`,
+	},
+];
+---
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+<BaseLayout title="Peter Fornasiero | AI Agent Builder & Software Engineer">
+	<main class="max-w-4xl mx-auto px-6 py-12 md:py-24">
+		<!-- Hero / Intro -->
+		<section
+			class="flex flex-col-reverse justify-between md:flex-row items-center md:items-stretch gap-12 mb-20"
+		>
+			<div class="flex-1 flex flex-col justify-between">
+				<div>
+					<!-- Title & Socials -->
+					<div class="flex items-center gap-6 mb-6">
+						<h1
+							class="text-5xl md:text-6xl font-black text-gray-900 tracking-tight"
+						>
+							Peter Fornasiero
+						</h1>
+						<div class="flex gap-4">
+							<!-- GitHub Icon -->
+							<a
+								href="https://github.com/pforn"
+								target="_blank"
+								class="text-gray-400 hover:text-forest transition-colors"
+								title="GitHub"
+							>
+								<span class="sr-only">GitHub Profile</span>
+								<svg
+									class="w-8 h-8"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										fill-rule="evenodd"
+										d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+										clip-rule="evenodd"></path>
+								</svg>
+							</a>
+							<!-- LinkedIn Icon -->
+							<a
+								href="https://linkedin.com/in/peter-fornasiero"
+								target="_blank"
+								class="text-gray-400 hover:text-forest transition-colors"
+								title="LinkedIn"
+							>
+								<span class="sr-only">LinkedIn Profile</span>
+								<svg
+									class="w-8 h-8"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+									><path
+										d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+									></path>
+								</svg>
+							</a>
+						</div>
+					</div>
 
-    <link rel="stylesheet" type="text/css" href="/assets/win95.css" />
-  </head>
+					<!-- Badge -->
+					<div
+						class="flex items-center gap-3 text-xl text-gray-700 mb-8 font-bold"
+					>
+						<span>Software Engineer & Solutions Architect</span>
+					</div>
+				</div>
 
-  <body class="windows-scrollbar">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-95">
-      <a class="navbar-brand" href="#">
-        <img src="/assets/icons/computer-3.png" /> Navbar</a
-      >
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Dropdown link
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+				<p class="text-lg text-gray-600 mb-8">
+					Hello there! Thanks for stopping by.
+				</p>
 
-    <!-- Header -->
+				<!-- Bio Blurbs -->
+				<div class="space-y-6 max-w-2xl mt-auto">
+					<div class="border-l-4 border-gray-200 pl-5">
+						<p class="text-lg text-gray-700 leading-relaxed mb-4">
+							<strong class="text-gray-900"
+								>I build the infrastructure that makes AI
+								actually work.</strong
+							>
+						</p>
+						<p class="text-lg text-gray-700 leading-relaxed">
+							Before I orchestrated agents, I learned to build
+							systems by hand, earning my software engineer degree
+							before agent harnesses were a thing. I learned to
+							build systems the hard way, meaning long nights
+							debugging and learning to communicate with other
+							programmers about code architecture. A foundation in
+							critical thinking and pure problem-solving will
+							slowly be outsourced to the machine, but my
+							generation is one of the last to be put through that
+							rigorous style of education. Validating ground truth
+							and calling B.S. on an LLM output is rapidly
+							becoming the most valuable skill for
+							humans-(left)-in-the-loop.
+						</p>
+					</div>
+					<div
+						class="border-l-4 border-forest pl-5 py-1 text-lg text-gray-700 leading-relaxed"
+					>
+						<h2 class="text-2xl font-bold text-gray-900 mb-2">
+							Today, I build agentic-first.
+						</h2>
+						<p class="text-lg text-gray-700 leading-relaxed mb-4">
+							Agentic-led development is just the next layer of
+							abstraction.
+						</p>
+						<p class="text-lg text-gray-700 leading-relaxed">
+							The same way everyone takes bytecode and the JVM for
+							granted, we will soon take building robust, scalable
+							systems for granted, too. From classical ML to
+							frontier LLMs, I'm not fooled by the magic-in-a-can;
+							I see them for what they are—tools. For now, I
+							leverage everything I can out of a supercharged
+							SDLC, applying my engineering ethics and business
+							acumen to hone these models into highly productive,
+							outcome-driven engines.
+						</p>
+					</div>
+				</div>
+			</div>
 
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Win95.CSS</h1>
-      <p class="lead">
-        Windows 95/98 stylized Bootstrap 4 theme. Responsive. Minimalistic.
-        Modern.
-      </p>
-    </div>
+			<!-- Picture Column -->
+			<div
+				class="flex flex-col gap-6 md:gap-0 justify-between flex-shrink-0 w-48 md:w-56 lg:w-64"
+			>
+				<!-- Profile Picture 1 -->
+				<div
+					class="w-full aspect-square rounded-2xl overflow-hidden bg-forest shadow-sm border-4 border-forest"
+				>
+					<Image
+						src="/peter_fornasiero_profile.jpg"
+						alt="Peter Fornasiero"
+						width={256}
+						height={256}
+						class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+					/>
+				</div>
+				<!-- Profile Picture 2 -->
+				<div
+					class="w-full aspect-square rounded-2xl overflow-hidden bg-forest shadow-sm border-4 border-forest"
+				>
+					<Image
+						src="/peter_mountain.jpg"
+						alt="Peter hiking on a mountain"
+						width={256}
+						height={256}
+						class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+					/>
+				</div>
+				<!-- Profile Picture 3 -->
+				<div
+					class="w-full aspect-square rounded-2xl overflow-hidden bg-forest shadow-sm border-4 border-forest"
+				>
+					<Image
+						src="/peter_iron_ring.jpg"
+						alt="Peter under the Iron Ring monument"
+						width={256}
+						height={256}
+						class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+					/>
+				</div>
+			</div>
+		</section>
 
-    <!-- Not header -->
+		<!-- Projects -->
+		<section class="mb-24">
+			<h2
+				class="text-3xl font-bold text-gray-900 mb-10 pb-2 border-b-2 border-gray-200 inline-block"
+			>
+				Check out what I'm working on:
+			</h2>
 
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-8 text-center">
-          <img src="/assets/macbook-mockup.png" class="img-fluid" />
-        </div>
-        <div class="col-md-4 my-auto">
-          <div class="card">
-            <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Check out personal page</h4>
-            </div>
-            <div class="card-body">
-              <ul class="list-unstyled mt-3 mb-4">
-                <li>Portfolio/Landing template</li>
-                <li>Alex's page</li>
-                <li>Cloud background</li>
-                <li>Winamp</li>
-                <li>It is very cool</li>
-              </ul>
-              <a href="personal_page" class="btn btn-lg btn-block"
-                ><img
-                  src="/assets/icons/internet_connection_wiz-5.png"
-                  class="icon-16"
-                />
-                Okay, go</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+			<div class="grid md:grid-cols-2 gap-8">
+				{
+					projects.map((project) => (
+						<div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-forest transition-colors flex flex-col h-full group shadow-sm hover:shadow-md">
+							<div class="flex items-start gap-4 mb-4">
+								<div
+									class="p-2 bg-gray-50 rounded-lg group-hover:scale-110 transition-transform shrink-0"
+									set:html={project.icon}
+								/>
+								<div>
+									<h3 class="text-2xl font-bold text-gray-900 leading-tight mb-1">
+										{project.title}
+									</h3>
+									<p class="text-xs text-forest font-bold tracking-widest uppercase">
+										{project.subtitle}
+									</p>
+								</div>
+							</div>
+							<p
+								class="text-lg text-gray-700 leading-relaxed flex-grow"
+								set:html={project.description}
+							/>
+							<div class="flex flex-wrap gap-2 mt-8 border-t border-gray-100 pt-6">
+								{project.tags.map((tag) => (
+									<span class="rounded-full bg-gray-50 px-3 py-1 text-sm text-gray-600 font-medium border border-gray-200">
+										{tag}
+									</span>
+								))}
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</section>
 
-    <!-- Bootstrap cards -->
-
-    <div class="container" id="page-content">
-      <div class="card-deck mb-3 text-center">
-        <div class="card square mb-4">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Square card</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $0 <small class="text-muted">/ mo</small>
-            </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>10 users included</li>
-              <li>2 GB of storage</li>
-              <li>Email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button
-              type="button"
-              class="btn btn-lg btn-block btn-outline-primary"
-            >
-              Sign up for free
-            </button>
-          </div>
-        </div>
-        <div class="card mb-4">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Normal card</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $15 <small class="text-muted">/ mo</small>
-            </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">
-              Get started
-            </button>
-          </div>
-        </div>
-        <div class="card w95 mb-4">
-          <div class="card-header">
-            <h4 class="my-0 font-weight-normal">One color card</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $15 <small class="text-muted">/ mo</small>
-            </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>20 users included</li>
-              <li>10 GB of storage</li>
-              <li>Priority email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">
-              Get started
-            </button>
-          </div>
-        </div>
-        <div class="card mb-4">
-          <div class="card-header header-inactive">
-            <h4 class="my-0 font-weight-normal">Inactive card</h4>
-          </div>
-          <div class="card-body">
-            <h1 class="card-title pricing-card-title">
-              $29 <small class="text-muted">/ mo</small>
-            </h1>
-            <ul class="list-unstyled mt-3 mb-4">
-              <li>30 users included</li>
-              <li>15 GB of storage</li>
-              <li>Phone and email support</li>
-              <li>Help center access</li>
-            </ul>
-            <button
-              type="button"
-              class="btn btn-lg btn-block btn-primary"
-              disabled
-            >
-              Contact us
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Forms -->
-
-    <div class="container">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Forms</h4>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label"
-                ><img
-                  src="/assets/icons/envelope_closed-1.png"
-                  class="icon-16-4"
-                />
-                Email</label
-              >
-              <div class="col-sm-10">
-                <input type="email" class="form-95" id="inputEmail3" />
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputPassword3" class="col-sm-2 col-form-label"
-                ><img src="/assets/icons/keys-0.png" class="icon-16-4" />
-                Password</label
-              >
-              <div class="col-sm-10">
-                <input type="password" class="form-95" id="inputPassword3" />
-              </div>
-            </div>
-            <fieldset class="form-group">
-              <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-                <div class="col-sm-10">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="gridRadios"
-                      id="gridRadios1"
-                      value="option1"
-                      checked
-                    />
-                    <label class="form-check-label" for="gridRadios1">
-                      First radio
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="gridRadios"
-                      id="gridRadios2"
-                      value="option2"
-                    />
-                    <label class="form-check-label" for="gridRadios2">
-                      Second radio
-                    </label>
-                  </div>
-                  <div class="form-check disabled">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="gridRadios"
-                      id="gridRadios3"
-                      value="option3"
-                      disabled
-                    />
-                    <label class="form-check-label" for="gridRadios3">
-                      Third disabled radio
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-            <div class="form-group row">
-              <div class="col-sm-2">Checkbox</div>
-              <div class="col-sm-10">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="gridCheck1"
-                  />
-                  <label class="form-check-label" for="gridCheck1">
-                    Example checkbox
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Sign in</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- Icons -->
-
-    <div class="container">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Icons</h4>
-        </div>
-        <div class="card-body">
-          <p>
-            Here we have 256-color icons from Windows 98. In png. <br />
-            All icons can be viewed at
-            <a href="https://win98icons.alexmeub.com/">
-              <img src="/assets/icons/search_web-1.png" class="icon-16-4" />
-              win98icons.alexmeub.com</a
-            >
-          </p>
-          <img src="/assets/icons/msie1-4.png" />
-          <img src="/assets/icons/laptop_small-0.png" />
-          <img src="/assets/icons/help_book_cool-1.png" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Progress -->
-
-    <div class="container">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Progress</h4>
-        </div>
-        <div class="card-body">
-          <p>Normal progress bar</p>
-          <div class="progress card">
-            <div
-              class="progress-bar"
-              role="progressbar"
-              aria-valuenow="0"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-          <br />
-          <div class="progress">
-            <div
-              class="progress-bar"
-              role="progressbar"
-              style="width: 25%"
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-          <br />
-          <div class="progress">
-            <div
-              class="progress-bar"
-              role="progressbar"
-              style="width: 50%"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-          <br />
-          <p>Class progress-bar-blocks</p>
-          <div class="progress">
-            <div
-              class="progress-bar progress-bar-blocks"
-              role="progressbar"
-              style="width: 100%"
-              aria-valuenow="100"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Elder scroll</h4>
-        </div>
-        <div
-          class="card-body windows-scrollbar"
-          style="overflow-y: scroll; height: 100px"
-        >
-          <h5>And modal:</h5>
-          <!-- Button trigger modal -->
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >
-            Launch demo modal
-          </button>
-          <p>Click button to show modal.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button
-              type="button"
-              class="btn"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <img src="/assets/confused_travolta.gif" class="img-fluid" />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- OTHER-->
-    <div class="container">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4 class="my-0 font-weight-normal">Other things</h4>
-        </div>
-        <div class="card-body">
-          <a class="btn btn-primary" href="video-background">
-            <img src="/assets/icons/video_-0.png" class="icon-16" /> Video
-            background
-          </a>
-          <p>Page with video background.</p>
-
-          <a class="btn btn-primary" href="cloud">
-            <img
-              src="/assets/icons/world_network_directories-1.png"
-              class="icon-16"
-            />
-            Cloud
-          </a>
-          <p>Cloud hosting landing page template.</p>
-
-          <a class="btn btn-primary" href="mobile">
-            <img src="/assets/icons/laptop_infrared-2.png" class="icon-16" />
-            Mobile
-          </a>
-          <p>Mobile app landing page template.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="taskbar">
-      <div class="row" style="margin-right: 0px">
-        <div class="col-8">
-          <a href="//alex-b.me" class="btn start-button"
-            ><img src="/assets/icons/users-1.png" class="icon-16" />Author</a
-          >
-          <a
-            href="https://github.com/AlexBSoft/win95.css"
-            class="btn start-button"
-            ><img
-              src="/assets/icons/directory_folder_options-5.png"
-              class="icon-16"
-            />
-            GitHub</a
-          >
-        </div>
-        <div class="col-4 time">By Alex B</div>
-      </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+		<!-- Footer -->
+		<footer
+			class="pt-8 flex flex-col items-center gap-4 border-t border-gray-100"
+		>
+			<div class="flex gap-8">
+				<a
+					href="https://github.com/pforn"
+					class="text-gray-400 hover:text-forest transition-colors font-medium"
+					>GitHub</a
+				>
+				<a
+					href="https://linkedin.com/in/peter-fornasiero"
+					class="text-gray-400 hover:text-forest transition-colors font-medium"
+					>LinkedIn</a
+				>
+			</div>
+			<p class="text-gray-400 text-sm">© 2026 Peter Fornasiero</p>
+		</footer>
+	</main>
+</BaseLayout>
